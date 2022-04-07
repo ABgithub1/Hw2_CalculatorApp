@@ -1,10 +1,10 @@
 package com.example.hw2_calculatorapp
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.hw2_calculatorapp.CalculatorMath.CalcMain
 import com.example.hw2_calculatorapp.databinding.FragmentCalculatorBinding
 
@@ -64,7 +64,8 @@ class CalculatorFragment : Fragment() {
                 val calculate = CalcMain()
                 mathRes.text = calculate.doCalculation(mathOp.text.toString())
                 val history = HistoryStorage
-                history.addToHistory(mathOp.text.toString())
+                val historyString = mathOp.text.toString() + " = " + mathRes.text.toString()
+                history.addToHistory(historyString)
             }
             lastOpButton.setOnClickListener {
                 pushFragment()
