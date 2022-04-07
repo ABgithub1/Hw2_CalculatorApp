@@ -24,3 +24,4 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 fun Fragment.pushFragment() {
     (requireActivity() as MainActivity).addFragment(LastOperationsFragment())
 }
+

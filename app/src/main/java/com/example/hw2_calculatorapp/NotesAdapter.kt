@@ -4,8 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hw2_calculatorapp.databinding.ItemNoteBinding
+import java.util.ArrayList
 
-class NotesAdapter(private val items: List<String>, private val itemClick: (String) -> Unit) :
+class NotesAdapter(private val items: MutableList<String>, private val itemClick: (String) -> Unit) :
     RecyclerView.Adapter<NoteViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {

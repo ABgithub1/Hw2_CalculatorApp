@@ -14,7 +14,7 @@ class LastOperationsFragment : Fragment() {
 
     private var _binding: FragmentLastOperationsBinding? = null
     private val binding get() = requireNotNull(_binding) { "View was destroyed" }
-    private var itemsList = mutableListOf<String>()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,20 +27,17 @@ class LastOperationsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         with(binding) {
             recyclerView.layoutManager = LinearLayoutManager(view.context)
+            val history = HistoryStorage
+            recyclerView.adapter = NotesAdapter(items = history.historyList ) {
 
-            val items = List(5) {
-                "item $it"
-            }
-
-            recyclerView.adapter = NotesAdapter(items) {
                 Toast.makeText(requireContext(), it, Toast.LENGTH_SHORT)
                     .show()
             }
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

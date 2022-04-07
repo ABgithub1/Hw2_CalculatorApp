@@ -11,13 +11,14 @@ import com.example.hw2_calculatorapp.databinding.FragmentCalculatorBinding
 class CalculatorFragment : Fragment() {
 
     private var _binding: FragmentCalculatorBinding? = null
-    private val binding get() = requireNotNull(_binding) {"View was destroyed"}
+    private val binding get() = requireNotNull(_binding) { "View was destroyed" }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return FragmentCalculatorBinding.inflate(inflater,container,false)
+        return FragmentCalculatorBinding.inflate(inflater, container, false)
             .also { _binding = it }
             .root
     }
@@ -62,7 +63,8 @@ class CalculatorFragment : Fragment() {
             buttonEquals.setOnClickListener {
                 val calculate = CalcMain()
                 mathRes.text = calculate.doCalculation(mathOp.text.toString())
-
+                val history = HistoryStorage
+                history.addToHistory(mathOp.text.toString())
             }
             lastOpButton.setOnClickListener {
                 pushFragment()
