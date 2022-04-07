@@ -64,8 +64,7 @@ class CalculatorFragment : Fragment() {
                 val calculate = CalcMain()
                 mathRes.text = calculate.doCalculation(mathOp.text.toString())
                 val history = HistoryStorage
-                val historyString = mathOp.text.toString() + " = " + mathRes.text.toString()
-                history.addToHistory(historyString)
+                history.addToHistory(mathOp.text.toString() + " = " + mathRes.text.toString())
             }
             lastOpButton.setOnClickListener {
                 pushFragment()
